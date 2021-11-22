@@ -1,0 +1,27 @@
+{% load static %}
+<html>
+    <link  href="{% static 'media/main.css' %}" rel="stylesheet">
+    <link href="{% static 'media/bootstrap.css' %}" rel="stylesheet">
+<body>
+    <h2>Register</h2>
+
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="email" name="email" placeholder="Email Address">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Register">
+    </form>
+
+    If you already have an account login. <a href="{% url 'login' %}">Log in at this point.</a>
+</body>
+</html>

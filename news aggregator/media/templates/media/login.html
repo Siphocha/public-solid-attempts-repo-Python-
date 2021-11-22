@@ -1,0 +1,21 @@
+{% load static %}
+<html>
+    <link  href="{% static 'media/main.css' %}" rel="stylesheet">
+    <link href="{% static 'media/bootstrap.css' %}" rel="stylesheet">
+<body>
+    <h2>Login Page</h2>
+    
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Login">
+    </form>
+    Make an account <a href="{% url 'register' %}">Register here.</a>
+    
+</body>
+</html>

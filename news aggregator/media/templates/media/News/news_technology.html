@@ -1,0 +1,45 @@
+{% load static %}
+
+<html lang="en">
+    <head>
+        <link  href="{% static 'media/main.css' %}" rel="stylesheet">
+        <link href="{% static 'media/bootstrap.css' %}" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width"
+    </head>
+    <body>
+{% block script %}
+    <script type="text/javascript" src="{% static 'media/likes.js' %}"></script>
+{% endblock %}
+    <nav class="navbar navbar-expand-lg">
+        <h2>SA Technology 📱:</h2>
+            <a class="nav-link button1" href="{% url 'news' %}"><b>News Home</b></a>
+    </nav>
+            {% block nav %} 
+            {% endblock %}
+        
+        </div>
+        <div class="row" style="position: relative; left: 50px;">
+            {% for n in api.articles %}
+            <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+                <img src="{{n.urlToImage}}" class="card-img-top" alt="{{n.source.name}}">
+                <div class="card-body">
+                  <h5 class="card-title">{{n.title}}</h5>
+                  <p class="card-text">{{n.description|truncatechars:150}}</p>
+                  <a id="button" href="{{n.url}}" target="_blank" class="btn btn-primary">View more</a>
+                </div>
+            </div>
+        </div>
+            {% endfor %}
+        </div>
+        <div class="main col-lg-10 col-md-9">
+            {% block body %}
+
+            {% endblock %} 
+        </div>
+        
+        </div>
+
+    </body>
+</html>
